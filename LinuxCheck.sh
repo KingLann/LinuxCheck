@@ -311,6 +311,10 @@ crontab_check() {
   print_msg "### Crontab 文件内容"
   print_code "$(find /var/spool/cron/ -type f -print0 | xargs -0 sudo cat | grep -a -v '#')"
 
+  # 系统计划任务内容
+  print_msg "### /etc/crontab 文件内容"
+  print_code "$(cat /etc/crontab)"
+
   #crontab可疑命令
   print_msg "### Crontab Backdoor"
   reverse_shell_check /etc/cron*
